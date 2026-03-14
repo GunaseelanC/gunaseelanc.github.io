@@ -1,169 +1,362 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Gunaseelan C | SOC Analyst</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gunaseelan C | SOC Analyst</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #0d1117;
-            color: #c9d1d9;
-        }
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
 
-        header {
-            text-align: center;
-            padding: 60px 20px;
-        }
+<style>
 
-        h1 {
-            font-size: 40px;
-            color: #58a6ff;
-            margin-bottom: 10px;
-        }
+body{
+background:#0f1115;
+color:#d1d5db;
+font-family:'JetBrains Mono', monospace;
+margin:0;
+scroll-behavior:smooth;
+}
 
-        h2 {
-            color: #58a6ff;
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 5px;
-        }
+/* HEADER */
 
-        section {
-            max-width: 900px;
-            margin: auto;
-            padding: 40px 20px;
-        }
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+border-bottom:1px solid #2a2f36;
+background:#111418;
+}
 
-        .skills span {
-            display: inline-block;
-            background: #161b22;
-            padding: 8px 12px;
-            margin: 5px;
-            border-radius: 5px;
-            border: 1px solid #30363d;
-        }
+.logo{
+font-size:20px;
+font-weight:600;
+color:#e5e7eb;
+}
 
-        .card {
-            background: #161b22;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 8px;
-            border: 1px solid #30363d;
-        }
+nav a{
+color:#9ca3af;
+margin-left:25px;
+text-decoration:none;
+font-size:14px;
+}
 
-        a {
-            color: #58a6ff;
-            text-decoration: none;
-        }
+nav a:hover{
+color:#e5e7eb;
+}
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            border-top: 1px solid #30363d;
-        }
+/* HERO */
 
-        button {
-            background: #238636;
-            border: none;
-            padding: 10px 15px;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+.hero{
+height:80vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:left;
+}
 
-        button:hover {
-            background: #2ea043;
-        }
-    </style>
+.terminal{
+border:1px solid #2a2f36;
+padding:35px;
+width:650px;
+background:#15181d;
+box-shadow:0 0 25px rgba(0,0,0,0.6);
+}
+
+.cmd{
+color:#9ca3af;
+}
+
+.output{
+color:#e5e7eb;
+margin-bottom:10px;
+}
+
+button{
+margin-top:15px;
+padding:10px 20px;
+background:#2a2f36;
+border:none;
+color:#e5e7eb;
+cursor:pointer;
+font-family:'JetBrains Mono', monospace;
+}
+
+button:hover{
+background:#3a4048;
+}
+
+/* SECTIONS */
+
+section{
+padding:70px 40px;
+max-width:1000px;
+margin:auto;
+}
+
+h2{
+border-bottom:1px solid #2a2f36;
+padding-bottom:10px;
+margin-bottom:25px;
+color:#e5e7eb;
+}
+
+/* SKILLS */
+
+.skills-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+border:1px solid #2a2f36;
+padding:20px;
+background:#15181d;
+transition:0.3s;
+}
+
+.card:hover{
+border-color:#4b5563;
+}
+
+/* PROJECTS */
+
+.project{
+border:1px solid #2a2f36;
+padding:20px;
+background:#15181d;
+margin-top:20px;
+transition:0.3s;
+}
+
+.project:hover{
+border-color:#4b5563;
+}
+
+/* CONTACT */
+
+#contact p{
+margin:10px 0;
+color:#9ca3af;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:20px;
+border-top:1px solid #2a2f36;
+margin-top:40px;
+background:#111418;
+color:#6b7280;
+}
+
+/* MATRIX BACKGROUND */
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+</style>
+
 </head>
 
 <body>
 
+<canvas id="matrix"></canvas>
+
 <header>
-    <h1>Gunaseelan C</h1>
-    <p>SOC Analyst | SIEM | Threat Detection | Incident Response</p>
-    <p>
-        <a href="https://linkedin.com/in/gunaseelan-cyber" target="_blank">LinkedIn</a> |
-        <a href="https://github.com/GunaseelanC" target="_blank">GitHub</a>
-    </p>
+
+<div class="logo">Gunaseelan C</div>
+
+<nav>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+
 </header>
 
-<section>
-    <h2>About Me</h2>
-    <p>
-        OT SOC Analyst with ~1 year of experience in 24x7 Security Operations Center monitoring across 
-        industrial and enterprise environments. Skilled in alert triage, log correlation, PLC anomaly investigation, 
-        and incident escalation using Splunk and Microsoft Sentinel.
-    </p>
+<section class="hero">
+
+<div class="terminal">
+
+<p class="cmd">$ whoami</p>
+<p class="output">SOC Analyst | Threat Detection | SIEM | OT Security</p>
+
+<p class="cmd">$ status</p>
+<p class="output">Monitoring threats. Hunting attackers. Securing infrastructure.</p>
+
+<button onclick="scrollToProjects()">View Projects</button>
+
+</div>
+
 </section>
 
-<section>
-    <h2>Core Skills</h2>
-    <div class="skills">
-        <span>Splunk</span>
-        <span>Microsoft Sentinel</span>
-        <span>Alert Triage</span>
-        <span>Event Correlation</span>
-        <span>Incident Investigation</span>
-        <span>PLC Monitoring</span>
-        <span>Wireshark</span>
-        <span>IDS</span>
-        <span>EDR</span>
-        <span>MITRE ATT&CK</span>
-        <span>Python</span>
-        <span>Bash</span>
-        <span>Linux</span>
-        <span>Windows</span>
-    </div>
+<section id="about">
+
+<h2>About Me</h2>
+
+<p>
+SOC Analyst with ~1 year of experience working in 24×7 Security Operations Center environments supporting enterprise and OT systems.
+Skilled in SIEM monitoring, alert triage, log analysis, EDR investigation, and incident response.
+Passionate about threat detection, automation, and building cybersecurity labs to strengthen security operations.
+</p>
+
 </section>
 
-<section>
-    <h2>Professional Experience</h2>
-    <div class="card">
-        <h3>SOC OT Analyst – Telesoft Technologies</h3>
-        <p>March 2025 – Jan 2026</p>
-        <ul>
-            <li>Monitored high-volume daily security events across OT & enterprise environments</li>
-            <li>Investigated 40+ alerts and escalated high-risk incidents</li>
-            <li>Correlated IDS, firewall & endpoint logs to reduce false positives</li>
-            <li>Performed PLC anomaly detection & OT traffic analysis</li>
-            <li>Mapped incidents to MITRE ATT&CK techniques</li>
-            <li>Automated SOC tasks using Python & Bash</li>
-        </ul>
-    </div>
+<section id="skills">
+
+<h2>Skills</h2>
+
+<div class="skills-grid">
+
+<div class="card">
+<h3>SIEM & Monitoring</h3>
+<ul>
+<li>Splunk</li>
+<li>QRadar</li>
+<li>Microsoft Sentinel</li>
+<li>Log Analysis</li>
+<li>Alert Triage</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Threat Analysis</h3>
+<ul>
+<li>MITRE ATT&CK</li>
+<li>IOC Analysis</li>
+<li>Threat Intelligence</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Networking</h3>
+<ul>
+<li>TCP/IP</li>
+<li>DNS</li>
+<li>HTTP</li>
+<li>Wireshark</li>
+<li>IDS</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Automation</h3>
+<ul>
+<li>Python</li>
+<li>Bash</li>
+<li>Linux</li>
+</ul>
+</div>
+
+</div>
+
 </section>
 
-<section>
-    <h2>Projects</h2>
+<section id="projects">
 
-    <div class="card">
-        <h3>SIEM Lab – ELK + Suricata</h3>
-        <p>
-            Built a personal lab for threat hunting, alert correlation, and incident analysis 
-            using ELK stack and Suricata IDS.
-        </p>
-    </div>
+<h2>Projects</h2>
 
-    <div class="card">
-        <h3>Senux – Linux Hardening Tool</h3>
-        <p>
-            Developed Python (CustomTkinter) + Bash-based GUI tool to automate Linux 
-            security hardening tasks.
-        </p>
-    </div>
+<div class="project">
+
+<h3>SIEM Lab (ELK + Suricata)</h3>
+
+<p>
+Built a personal SOC lab to simulate real-world threat detection using ELK Stack and Suricata IDS.
+Performed log correlation, alert investigation, and threat hunting.
+</p>
+
+</div>
+
+<div class="project">
+
+<h3>Senux – Linux Hardening Tool</h3>
+
+<p>
+Developed a GUI-based Linux hardening tool using Python, CustomTkinter, and Bash to automate security configurations and improve endpoint protection.
+</p>
+
+</div>
+
 </section>
 
-<section>
-    <h2>Contact</h2>
-    <p>Email: gunaseelan3864@gmail.com</p>
-    <p>Location: Coimbatore, India</p>
+<section id="contact">
+
+<h2>Contact</h2>
+
+<p>Email: gunaseelan3864@gmail.com</p>
+<p>LinkedIn: linkedin.com/in/gunaseelan-cyber</p>
+<p>GitHub: github.com/GunaseelanC</p>
+
 </section>
 
 <footer>
-    <p>© 2026 Gunaseelan C | SOC Analyst Portfolio</p>
+
+<p>© 2026 Gunaseelan C | Cybersecurity Portfolio</p>
+
 </footer>
+
+<script>
+
+/* Smooth Scroll */
+
+function scrollToProjects(){
+document.getElementById("projects").scrollIntoView({
+behavior:"smooth"
+});
+}
+
+/* MATRIX EFFECT (GRAY) */
+
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const letters = "01SOCSECURITY";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+
+const drops = [];
+
+for(let x = 0; x < columns; x++)
+drops[x] = 1;
+
+function draw(){
+
+ctx.fillStyle = "rgba(15,17,21,0.08)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle = "#6b7280";
+ctx.font = fontSize + "px monospace";
+
+for(let i = 0; i < drops.length; i++){
+
+const text = letters[Math.floor(Math.random()*letters.length)];
+
+ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+if(drops[i]*fontSize > canvas.height && Math.random() > 0.975)
+drops[i] = 0;
+
+drops[i]++;
+
+}
+
+}
+
+setInterval(draw, 40);
+
+</script>
 
 </body>
 </html>
