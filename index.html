@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -19,7 +18,6 @@ scroll-behavior:smooth;
 }
 
 /* HEADER */
-
 header{
 display:flex;
 justify-content:space-between;
@@ -27,33 +25,33 @@ align-items:center;
 padding:20px 40px;
 border-bottom:1px solid #2a2f36;
 background:#111418;
+position:sticky;
+top:0;
+z-index:10;
 }
 
 .logo{
 font-size:20px;
 font-weight:600;
-color:#e5e7eb;
 }
 
 nav a{
 color:#9ca3af;
 margin-left:25px;
 text-decoration:none;
-font-size:14px;
+transition:0.3s;
 }
 
 nav a:hover{
-color:#e5e7eb;
+color:#93c5fd;
 }
 
 /* HERO */
-
 .hero{
 height:80vh;
 display:flex;
 justify-content:center;
 align-items:center;
-text-align:left;
 }
 
 .terminal{
@@ -64,31 +62,18 @@ background:#15181d;
 box-shadow:0 0 25px rgba(0,0,0,0.6);
 }
 
-.cmd{
-color:#9ca3af;
-}
-
-.output{
-color:#e5e7eb;
-margin-bottom:10px;
-}
+.cmd{color:#9ca3af;}
+.output{margin-bottom:10px;}
 
 button{
-margin-top:15px;
 padding:10px 20px;
 background:#2a2f36;
 border:none;
-color:#e5e7eb;
+color:#fff;
 cursor:pointer;
-font-family:'JetBrains Mono', monospace;
-}
-
-button:hover{
-background:#3a4048;
 }
 
 /* SECTIONS */
-
 section{
 padding:70px 40px;
 max-width:1000px;
@@ -97,13 +82,10 @@ margin:auto;
 
 h2{
 border-bottom:1px solid #2a2f36;
-padding-bottom:10px;
 margin-bottom:25px;
-color:#e5e7eb;
 }
 
 /* SKILLS */
-
 .skills-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -114,56 +96,97 @@ gap:20px;
 border:1px solid #2a2f36;
 padding:20px;
 background:#15181d;
-transition:0.3s;
+opacity:0;
+transform:translateY(30px);
+transition:0.4s;
+}
+
+.card.show{
+opacity:1;
+transform:translateY(0);
 }
 
 .card:hover{
-border-color:#4b5563;
+transform:translateY(-5px);
 }
 
 /* PROJECTS */
-
 .project{
 border:1px solid #2a2f36;
 padding:20px;
 background:#15181d;
 margin-top:20px;
-transition:0.3s;
+transition:0.4s;
+opacity:0;
+transform:translateY(30px);
+text-decoration:none;
+color:#d1d5db;
+display:block;
+}
+
+.project.show{
+opacity:1;
+transform:translateY(0);
 }
 
 .project:hover{
-border-color:#4b5563;
+transform:translateY(-5px);
+border-color:#93c5fd;
+}
+
+/* BADGES */
+.badge-container{
+display:flex;
+justify-content:center;
+}
+
+.badge-card{
+background:#15181d;
+padding:20px;
+border-radius:10px;
+text-align:center;
+transition:0.4s;
+}
+
+.badge-card:hover{
+transform:scale(1.05);
+box-shadow:0 0 25px rgba(59,130,246,0.5);
+}
+
+.badge-img{
+width:120px;
 }
 
 /* CONTACT */
-
-#contact p{
-margin:10px 0;
-color:#9ca3af;
+.contact-container{
+display:flex;
+justify-content:center;
+gap:40px;
 }
 
-/* FOOTER */
+.contact-card img{
+width:60px;
+transition:0.3s;
+}
+
+.contact-card:hover img{
+transform:scale(1.2);
+}
+
+/* MATRIX */
+canvas{
+position:fixed;
+z-index:-1;
+pointer-events:none;
+}
 
 footer{
 text-align:center;
 padding:20px;
 border-top:1px solid #2a2f36;
-margin-top:40px;
-background:#111418;
-color:#6b7280;
-}
-
-/* MATRIX BACKGROUND */
-
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
 }
 
 </style>
-
 </head>
 
 <body>
@@ -171,190 +194,152 @@ z-index:-1;
 <canvas id="matrix"></canvas>
 
 <header>
-
 <div class="logo">Gunaseelan C</div>
-
 <nav>
 <a href="#about">About</a>
 <a href="#skills">Skills</a>
+<a href="#badges">Badges</a>
 <a href="#projects">Projects</a>
 <a href="#contact">Contact</a>
 </nav>
-
 </header>
 
 <section class="hero">
-
 <div class="terminal">
-
 <p class="cmd">$ whoami</p>
 <p class="output">SOC Analyst | Threat Detection | SIEM | OT Security</p>
-
-<p class="cmd">$ status</p>
-<p class="output">Monitoring threats. Hunting attackers. Securing infrastructure.</p>
-
 <button onclick="scrollToProjects()">View Projects</button>
-
 </div>
-
 </section>
 
 <section id="about">
-
-<h2>About Me</h2>
-
+<h2>About</h2>
 <p>
-SOC Analyst with ~1 year of experience working in 24×7 Security Operations Center environments supporting enterprise and OT systems.
-Skilled in SIEM monitoring, alert triage, log analysis, EDR investigation, and incident response.
-Passionate about threat detection, automation, and building cybersecurity labs to strengthen security operations.
+SOC Analyst with ~1 year of experience working in 24×7 Security Operations Center environments supporting enterprise and OT systems. Skilled in SIEM monitoring, alert triage, log analysis, EDR investigation, and incident response. Passionate about threat detection, automation, and building cybersecurity labs to strengthen security operations.
 </p>
-
 </section>
 
 <section id="skills">
-
 <h2>Skills</h2>
-
 <div class="skills-grid">
 
-<div class="card">
-<h3>SIEM & Monitoring</h3>
-<ul>
-<li>Splunk</li>
-<li>QRadar</li>
-<li>Microsoft Sentinel</li>
-<li>Log Analysis</li>
-<li>Alert Triage</li>
-</ul>
-</div>
-
-<div class="card">
-<h3>Threat Analysis</h3>
-<ul>
-<li>MITRE ATT&CK</li>
-<li>IOC Analysis</li>
-<li>Threat Intelligence</li>
-</ul>
-</div>
-
-<div class="card">
-<h3>Networking</h3>
-<ul>
-<li>TCP/IP</li>
-<li>DNS</li>
-<li>HTTP</li>
-<li>Wireshark</li>
-<li>IDS</li>
-</ul>
-</div>
-
-<div class="card">
-<h3>Automation</h3>
-<ul>
-<li>Python</li>
-<li>Bash</li>
-<li>Linux</li>
-</ul>
-</div>
+<div class="card">SIEM: Splunk, QRadar, Sentinel</div>
+<div class="card">Threat Analysis: MITRE, IOC</div>
+<div class="card">Networking: TCP/IP, DNS, Wireshark</div>
+<div class="card">Automation: Python, Bash, Linux</div>
 
 </div>
+</section>
 
+<section id="badges">
+<h2>Badges</h2>
+<div class="badge-container">
+<div class="badge-card">
+<img src="assets/First_step_into_soc.png" class="badge-img">
+<h3>First Step into SOC</h3>
+<p>Explored emerging threats and SOC response</p>
+</div>
+</div>
 </section>
 
 <section id="projects">
-
 <h2>Projects</h2>
 
-<div class="project">
-
+<a href="https://github.com/GunaseelanC" target="_blank" class="project">
 <h3>SIEM Lab (ELK + Suricata)</h3>
+<p>Simulated SOC environment for threat detection, log analysis, and alert investigation.</p>
+</a>
 
-<p>
-Built a personal SOC lab to simulate real-world threat detection using ELK Stack and Suricata IDS.
-Performed log correlation, alert investigation, and threat hunting.
-</p>
-
-</div>
-
-<div class="project">
-
+<a href="https://github.com/GunaseelanC" target="_blank" class="project">
 <h3>Senux – Linux Hardening Tool</h3>
-
-<p>
-Developed a GUI-based Linux hardening tool using Python, CustomTkinter, and Bash to automate security configurations and improve endpoint protection.
-</p>
-
-</div>
+<p>Automated Linux security configurations using Python GUI and Bash scripting.</p>
+</a>
 
 </section>
 
 <section id="contact">
-
 <h2>Contact</h2>
+<div class="contact-container">
 
-<p>Email: gunaseelan3864@gmail.com</p>
-<p>LinkedIn: linkedin.com/in/gunaseelan-cyber</p>
-<p>GitHub: github.com/GunaseelanC</p>
+<a href="mailto:gunaseelan3864@gmail.com" class="contact-card">
+<img src="assets/email.png">
+</a>
 
+<a href="https://linkedin.com/in/gunaseelan-cyber" target="_blank" class="contact-card">
+<img src="assets/linkedin.png">
+</a>
+
+<a href="https://github.com/GunaseelanC" target="_blank" class="contact-card">
+<img src="assets/github.png">
+</a>
+
+</div>
 </section>
 
 <footer>
-
-<p>© 2026 Gunaseelan C | Cybersecurity Portfolio</p>
-
+<p>© 2026 Gunaseelan C</p>
 </footer>
 
 <script>
 
-/* Smooth Scroll */
+/* NAV SCROLL */
+document.querySelectorAll('nav a').forEach(a=>{
+a.onclick=e=>{
+e.preventDefault();
+document.querySelector(a.getAttribute("href"))
+.scrollIntoView({behavior:"smooth"});
+};
+});
 
 function scrollToProjects(){
-document.getElementById("projects").scrollIntoView({
-behavior:"smooth"
-});
+document.getElementById("projects").scrollIntoView({behavior:"smooth"});
 }
 
-/* MATRIX EFFECT (GRAY) */
+/* ANIMATION */
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+});
 
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
+document.querySelectorAll(".card, .project").forEach(el=>{
+observer.observe(el);
+});
 
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
+/* MATRIX */
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+canvas.height=window.innerHeight;
+canvas.width=window.innerWidth;
 
-const letters = "01SOCSECURITY";
-const fontSize = 14;
-const columns = canvas.width / fontSize;
+const letters="SOC01";
+const fontSize=14;
+const columns=canvas.width/fontSize;
+const drops=[];
 
-const drops = [];
-
-for(let x = 0; x < columns; x++)
-drops[x] = 1;
+for(let i=0;i<columns;i++) drops[i]=1;
 
 function draw(){
-
-ctx.fillStyle = "rgba(15,17,21,0.08)";
+ctx.fillStyle="rgba(15,17,21,0.08)";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
-ctx.fillStyle = "#6b7280";
-ctx.font = fontSize + "px monospace";
+ctx.fillStyle="#6b7280";
+ctx.font=fontSize+"px monospace";
 
-for(let i = 0; i < drops.length; i++){
+for(let i=0;i<drops.length;i++){
+const text=letters[Math.floor(Math.random()*letters.length)];
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
 
-const text = letters[Math.floor(Math.random()*letters.length)];
-
-ctx.fillText(text, i*fontSize, drops[i]*fontSize);
-
-if(drops[i]*fontSize > canvas.height && Math.random() > 0.975)
-drops[i] = 0;
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
+drops[i]=0;
 
 drops[i]++;
-
+}
 }
 
-}
-
-setInterval(draw, 40);
+setInterval(draw,40);
 
 </script>
 
